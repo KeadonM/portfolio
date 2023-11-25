@@ -34,7 +34,7 @@ function App() {
           className="name"
           href="https://keadonm.github.io/12-odin-battleship/"
           target="blank">
-          BattleShip
+          Battleship
         </a>
       </div>
     </>
