@@ -9,6 +9,11 @@
 
 .name {
   font-size: $fs-800;
+  line-height: 1.1em;
+}
+
+.construction {
+  font-size: $fs-700;
 }
 
 .logo {
@@ -49,4 +54,5 @@
 
 .projects-container {
   margin-top: 5%;
+  font-size: $fs-600;
 }
