@@ -27,6 +27,10 @@ function App() {
           Weatherly
         </a>
         <span> | </span>
+        <a href="https://keadonm.github.io/10-odin-todo-list/" target="blank">
+          Tasker
+        </a>
+        <span> | </span>
         <a href="https://keadonm.github.io/12-odin-battleship/" target="blank">
           Battleship
         </a>
