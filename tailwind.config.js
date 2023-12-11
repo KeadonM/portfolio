@@ -15,6 +15,7 @@ module.exports = {
       600: "clamp(2rem, calc(1.73rem + 1.38vw), 3.38rem)",
       700: "clamp(3rem, calc(2.7rem + 1.5vw), 4.5rem)",
       800: "clamp(4rem, calc(3.45rem + 2.75vw), 6.75rem)",
+      app: "clamp(0.5rem, calc(0.25rem + 3.75vw), 6rem)",
     },
     extend: {
       fontSize: {

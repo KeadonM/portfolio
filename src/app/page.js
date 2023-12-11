@@ -2,22 +2,22 @@ import { FaGithub, FaWrench } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <main className="p-700 flex min-h-screen flex-col bg-zinc-800 ">
-      <div className="flex flex-col text-indigo-500">
+    <main className="p-app min-h-screen bg-zinc-800 ">
+      <div className=" text-indigo-500">
         <a
           href="https://github.com/KeadonM"
-          className="text-fluid-800 flex items-center"
+          className="text-fluid-800 items-center tracking-tighter"
           target="blank"
         >
           Keadon Mitchell&nbsp;
-          <FaGithub />
+          <FaGithub className="inline-block" />
         </a>
-        <div className="text-fluid-600 flex items-center text-white">
+        <div className="text-fluid-600 items-center tracking-tighter text-white">
           Under Construction&nbsp;
-          <FaWrench />
+          <FaWrench className="inline-block" />
         </div>
 
-        <div className="text-fluid-600 mt-500">
+        <div className="text-fluid-600 mt-500 tracking-tight">
           <a href="https://conspicuous.ink" target="blank">
             Conspicuous Ink
           </a>
