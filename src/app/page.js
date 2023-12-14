@@ -1,50 +1,29 @@
-import { FaGithub, FaWrench } from "react-icons/fa";
+import Aside from "./aside.js";
+import Content from "./content.js";
+import "./animation.scss";
 
 export default function Home() {
   return (
-    <main className="p-app min-h-screen bg-zinc-800 ">
-      <div className=" text-indigo-500">
-        <a
-          href="https://github.com/KeadonM"
-          className="text-fluid-800 items-center tracking-tighter"
-          target="blank"
+    <div id="app-wrapper" className="flex justify-center bg-zinc-800">
+      <div
+        style={{ gridTemplateColumns: "1.25fr 2fr" }}
+        className="mx-app grid min-h-screen max-w-6xl gap-400 text-white"
+      >
+        <div
+          id="nav-wrapper"
+          className="sticky top-0 flex min-h-screen self-start py-600"
         >
-          Keadon Mitchell&nbsp;
-          <FaGithub className="inline-block" />
-        </a>
-        <div className="text-fluid-600 items-center tracking-tighter text-white">
-          Under Construction&nbsp;
-          <FaWrench className="inline-block" />
+          <Aside />
         </div>
-
-        <div className="text-fluid-600 mt-500 tracking-tight">
-          <a href="https://conspicuous.ink" target="blank">
-            Conspicuous Ink
-          </a>
-          <span className="text-white"> | </span>
-          <a href="https://resucraft.keadon.dev/" target="blank">
-            ResuCraft
-          </a>
-          <span className="text-white"> | </span>
-          <a
-            href="https://keadonm.github.io/11-odin-weather-app/"
-            target="blank"
-          >
-            Weatherly
-          </a>
-          <span className="text-white"> | </span>
-          <a href="https://keadonm.github.io/10-odin-todo-list/" target="blank">
-            Tasker
-          </a>
-          <span className="text-white"> | </span>
-          <a
-            href="https://keadonm.github.io/12-odin-battleship/"
-            target="blank"
-          >
-            Battleship
-          </a>
+        <div id="content-wrapper" className="pt-600">
+          <Content />
+        </div>
+        <div id="footer-wrapper" className="col-span-full pb-300 text-center">
+          <footer>
+            footerfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooter
+          </footer>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
