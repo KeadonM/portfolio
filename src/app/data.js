@@ -6,7 +6,7 @@ const data = {
     title: "Full Stack Engineer",
     blurb:
       "I strive to create beautiful scalable apps. Currently open for work.",
-    nav: ["About", "Experience", "Projects", "Blog"],
+    nav: ["About", "Experience", "Projects", "Blog", "Resume"],
     email: "reach@keadon.dev",
   },
 
