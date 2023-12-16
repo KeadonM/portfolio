@@ -6,14 +6,15 @@ export default function Aside() {
   const nameArr = data.info.name.split("");
   const titleArr = data.info.title.split("");
   const blurbArr = data.info.blurb.split(" ");
+  const emailArr = data.info.email.split("");
 
   return (
     <aside
       id="aside"
-      className="flex flex-col justify-between gap-600 text-fluid-600"
+      className="text-light-2 sticky top-0 flex min-h-full flex-col justify-between gap-600 self-start text-fluid-600"
     >
       <div id="title-wrapper">
-        <div id="name">
+        <div id="name" className="min-w-max">
           <a
             href="https://github.com/KeadonM"
             className="text-fluid-700 tracking-tighter [&>span]:inline-block"
@@ -27,7 +28,10 @@ export default function Aside() {
           </a>
         </div>
 
-        <div id="title" className="tracking-tighter [&>span]:inline-block">
+        <div
+          id="title"
+          className="min-w-max tracking-tighter [&>span]:inline-block"
+        >
           {titleArr.map((e) => (
             <span key={uuidv4()} className="char">
               {e === " " ? "\u00A0" : e}
@@ -49,22 +53,21 @@ export default function Aside() {
 
       <nav id="nav" className="mb-auto">
         <ul>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#experience">Experience</a>
-          </li>
-          <li>
-            <a href="#projects">Projects</a>
-          </li>
-          <li>
-            <a href="#blog">Blog</a>
-          </li>
+          {data.info.nav.map((string) => (
+            <li key={uuidv4()}>
+              <a href={"#" + string.toLowerCase()}>
+                {string.split("").map((e) => (
+                  <span key={uuidv4()} className="char">
+                    {e === " " ? "\u00A0" : e}
+                  </span>
+                ))}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
 
-      <div id="links-wrapper" className="pb-800">
+      <div id="links-wrapper" className="pb-400">
         <ul className="flex gap-400">
           <li>
             <FaGithub />
@@ -76,7 +79,16 @@ export default function Aside() {
             <FaEnvelope />
           </li>
         </ul>
-        <div className="text-fluid-500 opacity-50">reach@keadon.dev</div>
+
+        <div id="email" className="text-fluid-500 opacity-50 ">
+          <a className="[&>span]:inline-block">
+            {emailArr.map((e) => (
+              <span key={uuidv4()} className="char">
+                {e === " " ? "\u00A0" : e}
+              </span>
+            ))}
+          </a>
+        </div>
       </div>
     </aside>
   );

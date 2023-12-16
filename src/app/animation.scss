@@ -1,8 +1,10 @@
-$delay: 3s;
+$delay: 3.5s;
 
 #main {
   opacity: 0;
-  animation: opacity75 1.25s ease-in-out $delay * 1.5 forwards;
+  animation:
+    fall-in 2.5s cubic-bezier(0.25, 1, 0.33, 1) $delay * 1.75 forwards,
+    opacity75 3.5s ease-in-out $delay * 1.75 forwards;
 }
 
 #aside {
@@ -45,6 +47,7 @@ $delay: 3s;
           &:nth-child(#{$i}) {
             animation:
               slide-up 0.75s ease-in-out $delay / 3 + 0.15s * $i forwards,
+              pop-in 0.75s ease-in-out $delay / 3 + 0.15s * $i forwards,
               opacity50 3s ease-in-out $delay / 3 + 0.15s * $i forwards;
           }
         }
@@ -54,12 +57,30 @@ $delay: 3s;
 
   #nav {
     li {
-      opacity: 0;
-      @for $i from 1 through 4 {
-        &:nth-child(#{$i}) {
-          animation:
-            slide-in 1.33s ease-in-out $delay + 0.066s * $i forwards,
-            opacity50 3s ease-in-out $delay + 0.066s * $i forwards;
+      @for $li from 1 through 5 {
+        &:nth-child(#{$li}) {
+          .char {
+            opacity: 0;
+
+            @for $i from 1 through 20 {
+              &:nth-child(#{$i}) {
+                animation: opacity50
+                  3s
+                  ease-in-out
+                  $delay *
+                  (1 + (0.05 * $li)) +
+                  0.05s *
+                  $i
+                  forwards;
+              }
+            }
+          }
+        }
+      }
+
+      &:hover {
+        .char {
+          opacity: 100%;
         }
       }
     }
@@ -70,9 +91,33 @@ $delay: 3s;
       opacity: 0;
       @for $i from 1 through 3 {
         &:nth-child(#{$i}) {
-          animation:
-            slide-up 0.99s ease-in-out $delay + 0.066s * $i forwards,
-            opacity50 3s ease-in-out $delay + 0.066s * $i forwards;
+          animation: opacity50
+            3s
+            ease-in-out
+            $delay *
+            1.25 +
+            0.15s *
+            $i
+            forwards;
+        }
+      }
+    }
+  }
+
+  #email {
+    .char {
+      opacity: 0;
+
+      @for $i from 1 through 16 {
+        &:nth-child(#{$i}) {
+          animation: opacity75
+            4s
+            ease-in-out
+            $delay *
+            1.35 +
+            0.05s *
+            $i
+            forwards;
         }
       }
     }
@@ -103,6 +148,18 @@ $delay: 3s;
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    scale: 0;
+  }
+  90% {
+    scale: 1.1;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

@@ -1,9 +1,13 @@
+import preview from "./conspicuous-ink.webp";
+
 const data = {
   info: {
     name: "Keadon Mitchell",
     title: "Full Stack Engineer",
     blurb:
       "I strive to create beautiful scalable apps. Currently open for work.",
+    nav: ["About", "Experience", "Projects", "Blog"],
+    email: "reach@keadon.dev",
   },
 
   about: [
@@ -13,17 +17,40 @@ const data = {
   ],
 
   skills: [
+    { title: "JS", img: "" },
+    { title: "TS", img: "" },
+    { title: "C#", img: "" },
+    { title: "Java", img: "" },
+    { title: "Python", img: "" },
+    { title: "React", img: "" },
+    { title: "Next", img: "" },
+    { title: ".Net", img: "" },
+    { title: "Unity", img: "" },
+    { title: "Node", img: "" },
     { title: "HTML", img: "" },
     { title: "CSS", img: "" },
-    { title: "JS", img: "" },
+    { title: "SCSS", img: "" },
+    { title: "Tailwind", img: "" },
+    { title: "Webpack", img: "" },
+    { title: "Vite", img: "" },
   ],
 
   experiences: [
     {
       title: "Conspicuous Ink",
-      img: "",
+      img: preview,
       date: "Mar - 2023",
-      desc: "Freelanced custom tattoo studio website. JS, CSS, Firebase, ImageKit, MapBox, Vite. Deployed to Hostinger.",
+      desc: "Freelanced custom tattoo studio website. Deployed to Hostinger.",
+      skills: [
+        "HTML",
+        "CSS",
+        "JS",
+        "GCP",
+        "Firebase",
+        "ImageKit",
+        "MapBox",
+        "Vite",
+      ],
       link: "https://conspicuous.ink/",
     },
   ],
@@ -31,22 +58,26 @@ const data = {
   projects: [
     {
       title: "ResuCraft",
-      img: "",
+      img: preview,
       date: "Oct - 2023",
       desc: "Feature-rich scalable resume crafter. React.js, SCSS, Font Awesome, Google Fonts, Vite. Deployed to Vercel.",
+      skills: ["HTML", "CSS", "JS"],
       link: "https://resucraft.keadon.dev/",
     },
     {
       title: "Weatherly",
-      img: "",
+      img: preview,
       date: "Apr - 2020",
       desc: "API-driven weather/event forecaster. JS, SCSS, Vite, Weather API, Ticketmaster API. Deployed to GH Pages.",
+      skills: ["HTML", "CSS", "JS"],
       link: "https://keadonm.github.io/11-odin-weather-app/",
     },
     {
       title: "Duck Farm",
+      img: preview,
       date: "2018 - 2019",
       desc: "Accessible, innovative casual mobile game. Unity, C#, Google AdMob. Deployed to iOS and Android.",
+      skills: ["HTML", "CSS", "JS"],
       link: "https://www.youtube.com/watch?v=jwxJ7XPa15g",
     },
   ],

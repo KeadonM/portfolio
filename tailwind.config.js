@@ -6,8 +6,17 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      transparent: "transparent",
+      "dark-1": "#27272a",
+      "dark-2": "#09090b",
+      "light-1": "#a8a29e",
+      "light-2": "#8E7D6D",
+      "accent-1": "#A4896F",
+    },
     spacing: {
       0: 0,
+      50: "clamp(0.125rem, calc(0.1rem + 0.15vw), 0.28rem)",
       100: "clamp(0.25rem, calc(0.19rem + 0.31vw), 0.56rem)",
       200: "clamp(0.5rem, calc(0.43rem + 0.38vw), 0.88rem)",
       300: "clamp(0.75rem, calc(0.68rem + 0.38vw), 1.13rem)",
@@ -33,6 +42,9 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      maxWidth: {
+        app: "min(calc(11rem + 55vw), 70rem)",
       },
     },
   },
