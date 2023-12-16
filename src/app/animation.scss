@@ -1,4 +1,7 @@
 $delay: 3.5s;
+#title-wrapper {
+  line-height: 0.85;
+}
 
 #main {
   opacity: 0;
@@ -78,11 +81,11 @@ $delay: 3.5s;
         }
       }
 
-      &:hover {
-        .char {
-          opacity: 100%;
-        }
-      }
+      // &:hover {
+      //   .char {
+      //     opacity: 100%;
+      //   }
+      // }
     }
   }
 

@@ -2,7 +2,7 @@ import data from "./data.js";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
-export default function Aside() {
+export default function Aside({ setActiveSection }) {
   const nameArr = data.info.name.split("");
   const titleArr = data.info.title.split("");
   const blurbArr = data.info.blurb.split(" ");
@@ -11,14 +11,14 @@ export default function Aside() {
   return (
     <aside
       id="aside"
-      className="text-light-2 sticky top-0 flex min-h-full flex-col justify-between gap-600 self-start text-fluid-600"
+      className="text-light-2 sticky top-0 flex min-h-full flex-col justify-between gap-600 self-start pt-600 text-fluid-600"
     >
       <div id="title-wrapper">
         <div id="name" className="min-w-max">
           <a
             href="https://github.com/KeadonM"
             className="text-fluid-700 tracking-tighter [&>span]:inline-block"
-            target="blank"
+            target="_blank"
           >
             {nameArr.map((e) => (
               <span key={uuidv4()} className="char">
@@ -55,7 +55,10 @@ export default function Aside() {
         <ul>
           {data.info.nav.map((string) => (
             <li key={uuidv4()}>
-              <a href={"#" + string.toLowerCase()}>
+              <a
+                href={"#" + string.toLowerCase()}
+                onClick={() => setActiveSection(string.toLowerCase())}
+              >
                 {string.split("").map((e) => (
                   <span key={uuidv4()} className="char">
                     {e === " " ? "\u00A0" : e}
