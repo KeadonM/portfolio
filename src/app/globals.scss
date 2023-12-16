@@ -13,6 +13,8 @@ $accent-t: decrease-opacity($accent, $opacity);
 $accent-t-50: decrease-opacity($accent-t, 0.5);
 $accent-t-60: decrease-opacity($accent-t, 0.6);
 
+$clamp-600: clamp(2rem, calc(1.73rem + 1.38vw), 3.38rem);
+
 :root {
   --clr: #78716c;
   --bg-start: #27272a;
@@ -33,15 +35,25 @@ body {
   height: 100vh;
 }
 
+.active-section {
+  padding-top: $clamp-600 !important;
+  transition: all 0.5s 0.25s;
+}
+
 .img {
   width: 150px;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: top;
-  transition: all 4s;
+  opacity: 25%;
   border-radius: 1em;
 
+  transition:
+    opacity 0.5s ease-in-out,
+    object-position 1s ease-in-out;
+
   &:hover {
+    opacity: 100%;
     object-position: bottom;
   }
 }
@@ -80,6 +92,6 @@ body {
   }
 }
 
-.word:hover {
-  scale: 1.1;
-}
+// .word:hover {
+//   scale: 1.1;
+// }

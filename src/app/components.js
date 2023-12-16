@@ -25,30 +25,32 @@ export function SkillEntry({ title, img }) {
   );
 }
 
-export function ListEntry({ title, preview, date, desc, skills }) {
+export function ListEntry({ data }) {
   return (
-    <li className="flex gap-400">
+    <a
+      href={data.link}
+      className="flex justify-between gap-400"
+      target="_blank"
+    >
       {/* <p className="min-w-min">{date}</p> */}
       {/* <div className="h-400 w-400 text-accent-1"></div> */}
 
       <div className="">
         <h3 className="flex items-center text-fluid-400 text-accent-1">
-          {title}&nbsp;
+          {data.title}&nbsp;
           <FaExternalLinkAlt className="inline text-fluid-200" />
         </h3>
-        <p>{desc}</p>
-        {skills !== undefined && (
+        <p className="whitespace-pre">{data.desc}</p>
+        {data.skills !== undefined && (
           <ul className="flex flex-wrap gap-200">
-            {skills.map((e) => (
+            {data.skills.map((e) => (
               <SkillEntry key={uuidv4()} title={e} />
             ))}
           </ul>
         )}
       </div>
 
-      {preview !== undefined && (
-        <img src={preview.src} alt="" className="img" />
-      )}
-    </li>
+      {data.img !== "" && <img src={data.img.src} alt="" className="img" />}
+    </a>
   );
 }
