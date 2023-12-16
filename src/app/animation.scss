@@ -1,17 +1,29 @@
 $delay: 3.5s;
-#title-wrapper {
+
+#person {
   line-height: 0.85;
+}
+.word,
+.char {
+  opacity: 0;
 }
 
 #main {
   opacity: 0;
-  animation:
-    fall-in 2.5s cubic-bezier(0.25, 1, 0.33, 1) $delay * 1.75 forwards,
-    opacity75 3.5s ease-in-out $delay * 1.75 forwards;
+  transform: translateY(-300%);
+
+  transition:
+    transform 2.5s cubic-bezier(0.25, 1, 0.33, 1),
+    opacity 3.5s ease-in-out;
+
+  &.init {
+    opacity: 0.75;
+    transform: translateY(0%);
+  }
 }
 
 #aside {
-  #title-wrapper {
+  #person {
     line-height: 0.85;
 
     #name {
@@ -20,38 +32,62 @@ $delay: 3.5s;
 
         @for $i from 1 through 15 {
           &:nth-child(#{$i}) {
-            animation:
-              fall-in 0.66s ease-in-out 0.033s * $i forwards,
-              opacity100 3s ease-in-out 0.033s * $i forwards;
+            transition:
+              transform 0.66s ease-in-out 0.033s * $i,
+              opacity 3s ease-in-out 0.033s * $i;
           }
+        }
+      }
+
+      &.init {
+        .char {
+          opacity: 1;
+          transform: translateY(0%);
         }
       }
     }
 
     #title {
       .char {
-        opacity: 0;
-
+        transform: translateY(200%);
         @for $i from 1 through 19 {
           &:nth-child(#{$i}) {
-            animation:
-              slide-up 0.66s ease-in-out 0.033s * $i forwards,
-              opacity75 3s ease-in-out 0.033s * $i forwards;
+            transition:
+              transform 0.66s ease-in-out 0.033s * $i,
+              opacity 3s ease-in-out 0.033s * $i;
           }
+        }
+      }
+
+      &.init {
+        .char {
+          opacity: 0.75;
+          transform: translateY(0%);
         }
       }
     }
 
     #blurb {
       .word {
-        opacity: 0;
-
+        transform: translateY(200%) scale(0);
         @for $i from 1 through 11 {
           &:nth-child(#{$i}) {
-            animation:
-              slide-up 0.75s ease-in-out $delay / 3 + 0.15s * $i forwards,
-              pop-in 0.75s ease-in-out $delay / 3 + 0.15s * $i forwards,
-              opacity50 3s ease-in-out $delay / 3 + 0.15s * $i forwards;
+            transition:
+              transform 0.75s ease-in-out 0.15s * $i,
+              opacity 3s ease-in-out 0.15s * $i;
+          }
+        }
+      }
+
+      &.init {
+        .word {
+          opacity: 0.5;
+          transform: translateY(0%);
+
+          @for $i from 1 through 11 {
+            &:nth-child(#{$i}) {
+              animation: pop-in 0.75s ease-in-out 0.15s * $i forwards;
+            }
           }
         }
       }
@@ -63,66 +99,111 @@ $delay: 3.5s;
       @for $li from 1 through 5 {
         &:nth-child(#{$li}) {
           .char {
-            opacity: 0;
-
             @for $i from 1 through 20 {
               &:nth-child(#{$i}) {
-                animation: opacity50
-                  3s
-                  ease-in-out
-                  $delay *
-                  (1 + (0.05 * $li)) +
-                  0.05s *
-                  $i
-                  forwards;
+                transition: opacity 1s ease-in-out 0.066s * $i;
+              }
+            }
+          }
+
+          a:hover {
+            .char {
+              opacity: 1;
+              @for $i from 1 through 20 {
+                &:nth-child(#{$i}) {
+                  transition: opacity 0.1s ease-in-out 0.033s * $i;
+                }
               }
             }
           }
         }
       }
 
-      // &:hover {
-      //   .char {
-      //     opacity: 100%;
-      //   }
-      // }
+      &.init {
+        .char {
+          opacity: 0.5;
+        }
+      }
+
+      a {
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: grey;
+          transition: width 0.15s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
     }
   }
 
-  #links-wrapper {
+  #links {
     li {
       opacity: 0;
       @for $i from 1 through 3 {
         &:nth-child(#{$i}) {
-          animation: opacity50
-            3s
-            ease-in-out
-            $delay *
-            1.25 +
-            0.15s *
-            $i
-            forwards;
+          transition: opacity 3s ease-in-out 0.15s * $i;
         }
+      }
+      &.init {
+        opacity: 0.5;
       }
     }
   }
 
   #email {
     .char {
-      opacity: 0;
-
       @for $i from 1 through 16 {
         &:nth-child(#{$i}) {
-          animation: opacity75
-            4s
-            ease-in-out
-            $delay *
-            1.35 +
-            0.05s *
-            $i
-            forwards;
+          transition: opacity 4s ease-in-out 0.05s * $i;
         }
       }
+    }
+    &.init {
+      .char {
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+.img {
+  width: 150px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: top;
+  opacity: 25%;
+  border-radius: 1em;
+
+  transition: opacity 0.5s ease-in-out;
+  animation: slide-img 2.5s ease-in-out infinite alternate;
+  animation-play-state: paused;
+  // make duration based off length
+
+  &:hover {
+    opacity: 100%;
+    animation-play-state: running;
+  }
+
+  &:active {
+    animation-duration: 1.5s;
+  }
+
+  @keyframes slide-img {
+    0% {
+      object-position: top;
+    }
+    100% {
+      object-position: bottom;
     }
   }
 }
@@ -162,42 +243,30 @@ $delay: 3.5s;
     scale: 1.1;
   }
   100% {
-    opacity: 1;
+    scale: 1;
   }
 }
 
 @keyframes opacity50 {
-  0% {
-    opacity: 0%;
-  }
-  100% {
+  to {
     opacity: 50%;
   }
 }
 
 @keyframes opacity65 {
-  0% {
-    opacity: 0%;
-  }
-  100% {
+  to {
     opacity: 65%;
   }
 }
 
 @keyframes opacity75 {
-  0% {
-    opacity: 0%;
-  }
-  100% {
+  to {
     opacity: 75%;
   }
 }
 
 @keyframes opacity100 {
-  0% {
-    opacity: 0%;
-  }
-  100% {
+  to {
     opacity: 100%;
   }
 }

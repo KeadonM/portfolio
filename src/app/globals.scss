@@ -40,24 +40,6 @@ body {
   transition: all 0.5s 0.25s;
 }
 
-.img {
-  width: 150px;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  object-position: top;
-  opacity: 25%;
-  border-radius: 1em;
-
-  transition:
-    opacity 0.5s ease-in-out,
-    object-position 1s ease-in-out;
-
-  &:hover {
-    opacity: 100%;
-    object-position: bottom;
-  }
-}
-
 .gradient-container {
   position: fixed;
   overflow-y: scroll;

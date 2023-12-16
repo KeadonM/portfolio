@@ -12,7 +12,7 @@ export default function Content({ activeSection }) {
     >
       <section
         id="about"
-        className={activeSection === "about" && "active-section"}
+        className={activeSection === "about" ? "active-section" : ""}
       >
         <SectionHeader title="About Me" />
         <ul className="v-list">
@@ -26,7 +26,7 @@ export default function Content({ activeSection }) {
 
       <section
         id="skills"
-        className={activeSection === "skills" && "active-section"}
+        className={activeSection === "skills" ? "active-section" : ""}
       >
         {/* <SectionHeader title="Skills" Icon={FaFilter} /> */}
         <ul className="flex flex-wrap gap-200">
@@ -38,7 +38,7 @@ export default function Content({ activeSection }) {
 
       {/* <section
         id="experience"
-        className={activeSection === "experience" && "active-section"}
+        className={activeSection === "experience" ? "active-section" : ""}
       >
         <SectionHeader title="Experience" />
         <ul className="v-list">
@@ -50,7 +50,7 @@ export default function Content({ activeSection }) {
 
       <section
         id="projects"
-        className={activeSection === "projects" && "active-section"}
+        className={activeSection === "projects" ? "active-section" : ""}
       >
         {/* <SectionHeader title="Projects" /> */}
         <ul className="v-list">
@@ -62,7 +62,7 @@ export default function Content({ activeSection }) {
 
       {/* <section
         id="blog"
-        className={activeSection === "blog" && "active-section"}
+        className={activeSection === "blog" ? "active-section" : ""}
       >
         <SectionHeader title="Blog" />
         <ul className="v-list">
@@ -72,7 +72,10 @@ export default function Content({ activeSection }) {
         </ul>
       </section> */}
 
-      <section id="resume">
+      <section
+        id="resume"
+        className={activeSection === "projects" ? "active-section" : ""}
+      >
         <img
           src={data.info.resume.src}
           className="rounded-lg opacity-60 transition-opacity duration-500 hover:opacity-100"

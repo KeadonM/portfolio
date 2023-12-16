@@ -11,9 +11,9 @@ export default function Aside({ setActiveSection }) {
   return (
     <aside
       id="aside"
-      className="text-light-2 sticky top-0 flex min-h-full flex-col justify-between gap-600 self-start pt-600 text-fluid-600"
+      className="sticky top-0 flex min-h-full flex-col justify-between gap-600 self-start pt-600 text-fluid-600 text-light-2"
     >
-      <div id="title-wrapper">
+      <div id="person">
         <div id="name" className="min-w-max">
           <a
             href="https://github.com/KeadonM"
@@ -70,7 +70,7 @@ export default function Aside({ setActiveSection }) {
         </ul>
       </nav>
 
-      <div id="links-wrapper" className="pb-400">
+      <div id="links" className="pb-400">
         <ul className="flex gap-400">
           <li>
             <FaGithub />
@@ -82,16 +82,16 @@ export default function Aside({ setActiveSection }) {
             <FaEnvelope />
           </li>
         </ul>
+      </div>
 
-        <div id="email" className="text-fluid-500 opacity-50 ">
-          <a className="[&>span]:inline-block">
-            {emailArr.map((e) => (
-              <span key={uuidv4()} className="char">
-                {e === " " ? "\u00A0" : e}
-              </span>
-            ))}
-          </a>
-        </div>
+      <div id="email" className="text-fluid-500 opacity-50 ">
+        <a className="[&>span]:inline-block">
+          {emailArr.map((e) => (
+            <span key={uuidv4()} className="char">
+              {e === " " ? "\u00A0" : e}
+            </span>
+          ))}
+        </a>
       </div>
     </aside>
   );
