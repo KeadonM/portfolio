@@ -1,17 +1,30 @@
-import data from "./data.js";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import data from "../data/data.js";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
+function StringSplit({ arr, type }) {
+  return (
+    <>
+      {arr.map((e) => (
+        <span key={uuidv4()} className={`split ${type}`}>
+          {e === " " ? "\u00A0" : e}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default function Aside({ setActiveSection }) {
-  const nameArr = data.info.name.split("");
-  const titleArr = data.info.title.split("");
-  const blurbArr = data.info.blurb.split(" ");
-  const emailArr = data.info.email.split("");
+  const { char, word } = { char: "", word: " " };
+  const name = { arr: data.info.name.split(char), type: "char" };
+  const title = { arr: data.info.title.split(char), type: "char" };
+  const blurb = { arr: data.info.blurb.split(word), type: "word" };
+  const email = { arr: data.info.email.split(char), type: "char" };
 
   return (
     <aside
       id="aside"
-      className="sticky top-0 flex min-h-full flex-col justify-between gap-600 self-start pt-600 text-fluid-600 text-light-2"
+      className="sticky top-0 flex min-h-full flex-col justify-between  self-start pt-600 text-fluid-600 text-light-2"
     >
       <div id="person">
         <div id="name" className="min-w-max">
@@ -20,11 +33,7 @@ export default function Aside({ setActiveSection }) {
             className="text-fluid-700 tracking-tighter [&>span]:inline-block"
             target="_blank"
           >
-            {nameArr.map((e) => (
-              <span key={uuidv4()} className="char">
-                {e === " " ? "\u00A0" : e}
-              </span>
-            ))}
+            <StringSplit arr={name.arr} type={name.type} />
           </a>
         </div>
 
@@ -32,26 +41,18 @@ export default function Aside({ setActiveSection }) {
           id="title"
           className="min-w-max tracking-tighter [&>span]:inline-block"
         >
-          {titleArr.map((e) => (
-            <span key={uuidv4()} className="char">
-              {e === " " ? "\u00A0" : e}
-            </span>
-          ))}
+          <StringSplit arr={title.arr} type={title.type} />
         </div>
 
         <div
           id="blurb"
           className="mt-200 text-fluid-400 tracking-tighter [&>span]:inline-block"
         >
-          {blurbArr.map((e) => (
-            <span key={uuidv4()} className="word">
-              {e + "\u00A0"}
-            </span>
-          ))}
+          <StringSplit arr={blurb.arr} type={blurb.type} />
         </div>
       </div>
 
-      <nav id="nav" className="mb-auto">
+      <nav id="nav" className="my-600">
         <ul>
           {data.info.nav.map((string) => (
             <li key={uuidv4()}>
@@ -59,18 +60,14 @@ export default function Aside({ setActiveSection }) {
                 href={"#" + string.toLowerCase()}
                 onClick={() => setActiveSection(string.toLowerCase())}
               >
-                {string.split("").map((e) => (
-                  <span key={uuidv4()} className="char">
-                    {e === " " ? "\u00A0" : e}
-                  </span>
-                ))}
+                <StringSplit arr={string.split(char)} type={"char"} />
               </a>
             </li>
           ))}
         </ul>
       </nav>
 
-      <div id="links" className="pb-400">
+      <div id="links" className="">
         <ul className="flex gap-400">
           <li>
             <FaGithub />
@@ -81,16 +78,15 @@ export default function Aside({ setActiveSection }) {
           <li>
             <FaEnvelope />
           </li>
+          <li>
+            <FaPhone />
+          </li>
         </ul>
       </div>
 
       <div id="email" className="text-fluid-500 opacity-50 ">
         <a className="[&>span]:inline-block">
-          {emailArr.map((e) => (
-            <span key={uuidv4()} className="char">
-              {e === " " ? "\u00A0" : e}
-            </span>
-          ))}
+          <StringSplit arr={email.arr} type={email.type} />
         </a>
       </div>
     </aside>

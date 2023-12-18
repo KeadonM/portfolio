@@ -1,5 +1,5 @@
-import { SectionHeader, SkillEntry, ListEntry } from "./components.js";
-import data from "./data.js";
+import { Text, VList, HList } from "./components.js";
+import data from "../data/data.js";
 import { v4 as uuidv4 } from "uuid";
 import { FaFilter } from "react-icons/fa";
 import { info } from "autoprefixer";
@@ -10,70 +10,45 @@ export default function Content({ activeSection }) {
       id="main"
       className="flex flex-col pt-700 text-fluid-300 text-light-1 [&>section>.v-list]:space-y-200 [&>section]:pt-400 [null&>section]:space-x-300"
     >
-      <section
-        id="about"
-        className={activeSection === "about" ? "active-section" : ""}
-      >
-        <SectionHeader title="About Me" />
-        <ul className="v-list">
-          {data.about.map((e) => (
-            <li key={uuidv4()} className="">
-              {e}
-            </li>
-          ))}
-        </ul>
-      </section>
+      {Object.keys(data.lists).map((objKey) => {
+        const currentList = data.lists[objKey];
+        if (currentList.list.length > 0)
+          return (
+            <section
+              id={objKey}
+              key={uuidv4()}
+              className={activeSection === objKey ? "active-section" : ""}
+            >
+              {(() => {
+                switch (currentList.type) {
+                  case "Text":
+                    return (
+                      <Text title={currentList.title} list={currentList.list} />
+                    );
+                  case "HList":
+                    return (
+                      <HList
+                        title={currentList.title}
+                        list={currentList.list}
+                      />
+                    );
+                  case "VList":
+                    return (
+                      <VList
+                        title={currentList.title}
+                        list={currentList.list}
+                      />
+                    );
+                  default:
+                    return null;
+                }
+              })()}
+            </section>
+          );
+      })}
 
-      <section
-        id="skills"
-        className={activeSection === "skills" ? "active-section" : ""}
-      >
-        {/* <SectionHeader title="Skills" Icon={FaFilter} /> */}
-        <ul className="flex flex-wrap gap-200">
-          {data.skills.map((e) => (
-            <SkillEntry key={uuidv4()} title={e.title} />
-          ))}
-        </ul>
-      </section>
-
-      {/* <section
-        id="experience"
-        className={activeSection === "experience" ? "active-section" : ""}
-      >
-        <SectionHeader title="Experience" />
-        <ul className="v-list">
-          {data.experiences.map((e) => (
-            <ListEntry key={uuidv4()} data={e} />
-          ))}
-        </ul>
-      </section> */}
-
-      <section
-        id="projects"
-        className={activeSection === "projects" ? "active-section" : ""}
-      >
-        {/* <SectionHeader title="Projects" /> */}
-        <ul className="v-list">
-          {data.projects.map((e) => (
-            <ListEntry key={uuidv4()} data={e} />
-          ))}
-        </ul>
-      </section>
-
-      {/* <section
-        id="blog"
-        className={activeSection === "blog" ? "active-section" : ""}
-      >
-        <SectionHeader title="Blog" />
-        <ul className="v-list">
-          {data.posts.map((e) => (
-            <ListEntry key={uuidv4()} data={e} />
-          ))}
-        </ul>
-      </section> */}
-
-      <section
-        id="resume"
+      {/* prettier-ignore */}
+      <section id="resume"
         className={activeSection === "projects" ? "active-section" : ""}
       >
         <img

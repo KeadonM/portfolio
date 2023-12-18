@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
-import "./globals.scss";
+import SvgFilters from "./filters";
+import "./styles/globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {children}
         <Analytics />
+        <SvgFilters />
       </body>
     </html>
   );

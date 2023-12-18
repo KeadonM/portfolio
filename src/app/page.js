@@ -2,13 +2,13 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+import runAnimation from "./animationcontroller.js";
+import "./styles/animation.scss";
+
 import Aside from "./aside.js";
 import Content from "./content.js";
-import "./animation.scss";
-import runAnimation from "./animationcontroller.js";
 
 export default function Home() {
-  console.log("home");
   let [activeSection, setActiveSection] = useState("");
 
   // function handleScroll() {
