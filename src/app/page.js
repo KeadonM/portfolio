@@ -61,9 +61,18 @@ export default function Home() {
         id="scrollable-container"
         className="gradient-container flex justify-center scroll-smooth"
       >
-        <div id="app-wrapper" className="flex h-min max-w-app gap-700 ">
-          <Aside setActiveSection={setActiveSection} />
-          <Content activeSection={activeSection} />
+        <div
+          id="app-wrapper"
+          className="desktop:flex-row desktop:mx-700 desktop:gap-700 ml-400 mr-200 flex h-min flex-col gap-500"
+        >
+          <Aside
+            setActiveSection={setActiveSection}
+            className="desktop:block desktop:sticky desktop:top-0 desktop:self-start desktop:pt-700 desktop:max-w-aside max-w-content-fixed grid grid-cols-2 pt-600 text-fluid-600 text-light-2 "
+          />
+          <Content
+            activeSection={activeSection}
+            className="desktop:max-w-content desktop:translate-y-[-300%] desktop:mt-700 desktop:pt-700 max-w-content-fixed text-light-1 "
+          />
         </div>
       </div>
     </div>

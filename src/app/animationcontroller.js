@@ -1,5 +1,5 @@
 const delay = 2000;
-const delayFactor = [0, 0, 0.33, 1, 1.1, 1.2, 2];
+const delayFactor = [0, 0, 0.33, 1, 1.1, 1.2, 1.4];
 
 export default function runAnimation() {
   const elements = {

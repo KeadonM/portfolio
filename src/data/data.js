@@ -119,13 +119,13 @@ const data = {
       type: "VList",
       title: undefined,
       list: [
-        // {
-        //   title: "Blog Post",
-        //   img: "",
-        //   date: "2020",
-        //   desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
-        //   link: "http://google.com/",
-        // },
+        {
+          title: "Fluid Responsivity",
+          img: "",
+          date: "2020",
+          desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+          link: "http://google.com/",
+        },
       ],
     },
   },

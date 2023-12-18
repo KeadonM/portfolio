@@ -54,7 +54,16 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       maxWidth: {
-        app: "min(calc(11rem + 55vw), 70rem)",
+        aside: "min(calc(7.5rem + 15vw), 24.5rem)",
+        content: "min(calc(15rem + 25vw), 38rem)",
+        "content-fixed": "38rem",
+      },
+      screens: {
+        med: "29em",
+        desktop: "55em",
+      },
+      lineHeight: {
+        less: 0.85,
       },
     },
   },

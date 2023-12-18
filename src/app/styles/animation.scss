@@ -1,14 +1,11 @@
-#person {
-  line-height: 0.85;
-}
 .word,
 .char {
   opacity: 0;
 }
 
-#main {
+main {
   opacity: 0;
-  transform: translateY(-300%);
+  transform: translateY(300%);
 
   transition:
     transform 2.5s cubic-bezier(0.25, 1, 0.25, 1),
@@ -22,8 +19,6 @@
 
 #aside {
   #person {
-    line-height: 0.85;
-
     #name {
       .char {
         transform: translateY(-300%);
@@ -79,29 +74,29 @@
         }
       }
     }
+  }
 
-    #blurb {
-      .word {
-        transform: translateY(200%) scale(0);
-        transform-origin: bottom right;
-        @for $i from 1 through 11 {
-          &:nth-child(#{$i}) {
-            transition:
-              transform 0.8s ease-in-out 0.12s * $i,
-              opacity 2.5s ease-in-out 0.12s * $i;
-          }
+  #blurb {
+    .word {
+      transform: translateY(200%) scale(0);
+      transform-origin: bottom right;
+      @for $i from 1 through 11 {
+        &:nth-child(#{$i}) {
+          transition:
+            transform 0.8s ease-in-out 0.12s * $i,
+            opacity 2.5s ease-in-out 0.12s * $i;
         }
       }
+    }
 
-      &.init {
-        .word {
-          opacity: 0.5;
-          transform: translateY(0%);
+    &.init {
+      .word {
+        opacity: 0.5;
+        transform: translateY(0%);
 
-          @for $i from 1 through 11 {
-            &:nth-child(#{$i}) {
-              animation: pop-in 0.8s ease-in-out 0.12s * $i forwards;
-            }
+        @for $i from 1 through 11 {
+          &:nth-child(#{$i}) {
+            animation: pop-in 0.8s ease-in-out 0.12s * $i forwards;
           }
         }
       }
@@ -190,10 +185,10 @@
   }
 }
 
-.preview-img {
+.scroll-img {
   filter: url(#sepia);
 
-  animation: slide-img 2.5s ease-in-out infinite alternate;
+  animation: scroll-img 2.5s ease-in-out infinite alternate;
   animation-play-state: paused;
 
   &:hover {
@@ -203,7 +198,7 @@
     filter: url();
   }
 
-  @keyframes slide-img {
+  @keyframes scroll-img {
     0% {
       background-position: top;
     }

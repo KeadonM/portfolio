@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 import { FaFilter } from "react-icons/fa";
 import { info } from "autoprefixer";
 
-export default function Content({ activeSection }) {
+export default function Content({ activeSection, className }) {
   return (
     <main
       id="main"
-      className="flex flex-col pt-700 text-fluid-300 text-light-1 [&>section>.v-list]:space-y-200 [&>section]:pt-400 [null&>section]:space-x-300"
+      className={`flex flex-col gap-400 text-fluid-300  ${className}`}
     >
       {Object.keys(data.lists).map((objKey) => {
         const currentList = data.lists[objKey];

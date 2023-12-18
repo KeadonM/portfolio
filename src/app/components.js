@@ -20,7 +20,7 @@ export function HList({ title, list }) {
   return (
     <>
       {title && <SectionHeader title={title} />}
-      <ul className="h-list flex flex-wrap gap-x-200 gap-y-100">
+      <ul className="h-list flex flex-wrap gap-100">
         {list.map((e) => (
           <SkillEntry key={uuidv4()} title={e.title} />
         ))}
@@ -33,7 +33,7 @@ export function VList({ title, list }) {
   return (
     <>
       {title && <SectionHeader title={title} />}
-      <ul className="v-list flex flex-col flex-wrap gap-200">
+      <ul className="v-list flex flex-col gap-400">
         {list.map((e) => (
           <ListEntry key={uuidv4()} data={e} />
         ))}
@@ -44,7 +44,7 @@ export function VList({ title, list }) {
 
 function SectionHeader({ title, Icon }) {
   return (
-    <h2 className="mb-300 text-fluid-500 leading-none text-accent-1">
+    <h2 className="mb-200 text-fluid-500 leading-none text-accent-1">
       {Icon && (
         <>
           <Icon className="inline" />
@@ -67,7 +67,7 @@ function SkillEntry({ title, img }) {
 function ListEntry({ data }) {
   return (
     <li className="list-entry">
-      <a href={data.link} className="flex gap-200" target="_blank">
+      <a href={data.link} className="flex gap-300" target="_blank">
         {/* <p className="min-w-min">{date}</p> */}
         {/* <div className="h-400 w-400 text-accent-1"></div> */}
 
@@ -82,7 +82,7 @@ function ListEntry({ data }) {
 
         {data.img !== "" && (
           <div
-            className="preview-img w-3/10 relative ml-auto min-w-min shrink-0 rounded-xl bg-cover bg-top opacity-40 transition-opacity duration-0"
+            className="scroll-img w-3/10 relative ml-auto min-w-min shrink-0 rounded-xl bg-cover bg-top opacity-40 transition-opacity duration-0"
             style={{
               backgroundImage: `url(${data.img.src})`,
               animationDuration: `${data.img.height / data.img.width}s`,
