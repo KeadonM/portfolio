@@ -1,4 +1,4 @@
-import { Text, VList, HList } from "./components.js";
+import { Text, VList, HList, Resume } from "./components.js";
 import data from "../data/data.js";
 import { v4 as uuidv4 } from "uuid";
 import { FaFilter } from "react-icons/fa";
@@ -10,35 +10,26 @@ export default function Content({ activeSection, className }) {
       id="main"
       className={`flex flex-col gap-400 text-fluid-300  ${className}`}
     >
-      {Object.keys(data.lists).map((objKey) => {
-        const currentList = data.lists[objKey];
-        if (currentList.list.length > 0)
+      {Object.keys(data.section).map((objKey) => {
+        const currentList = data.section[objKey];
+        if (currentList.content.length > 0)
           return (
-            <section
-              id={objKey}
-              key={uuidv4()}
-              className={activeSection === objKey ? "active-section" : ""}
-            >
+            <section id={objKey} key={uuidv4()} className="content-section">
               {(() => {
+                const contentData = {
+                  title: currentList.title,
+                  content: currentList.content,
+                };
                 switch (currentList.type) {
                   case "Text":
-                    return (
-                      <Text title={currentList.title} list={currentList.list} />
-                    );
+                    return <Text data={contentData} />;
                   case "HList":
-                    return (
-                      <HList
-                        title={currentList.title}
-                        list={currentList.list}
-                      />
-                    );
+                    return <HList data={contentData} />;
                   case "VList":
-                    return (
-                      <VList
-                        title={currentList.title}
-                        list={currentList.list}
-                      />
-                    );
+                    return <VList data={contentData} />;
+                  case "Resume":
+                    return <Resume data={contentData} />;
+
                   default:
                     return null;
                 }
@@ -46,16 +37,6 @@ export default function Content({ activeSection, className }) {
             </section>
           );
       })}
-
-      {/* prettier-ignore */}
-      <section id="resume"
-        className={activeSection === "projects" ? "active-section" : ""}
-      >
-        <img
-          src={data.info.resume.src}
-          className="rounded-lg opacity-60 transition-opacity duration-500 hover:opacity-100"
-        />
-      </section>
 
       <div id="footer-wrapper" className="col-span-full py-400 text-center">
         <footer>Built with Next.js, deployed to Vercel.</footer>

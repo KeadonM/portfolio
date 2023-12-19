@@ -114,17 +114,6 @@ main {
               }
             }
           }
-
-          a:hover {
-            .char {
-              opacity: 1;
-              @for $i from 1 through 20 {
-                &:nth-child(#{$i}) {
-                  transition: opacity 0.1s ease-in-out 0.033s * $i;
-                }
-              }
-            }
-          }
         }
       }
 
@@ -132,24 +121,45 @@ main {
         .char {
           opacity: 0.5;
         }
-      }
 
-      a {
-        position: relative;
-
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background-color: grey;
-          transition: width 0.15s ease;
+        a:hover {
+          .char {
+            opacity: 1;
+            @for $i from 1 through 20 {
+              &:nth-child(#{$i}) {
+                transition: opacity 0.1s ease-in-out 0.033s * $i;
+              }
+            }
+          }
         }
 
-        &:hover::after {
-          width: 100%;
+        a {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: grey;
+            transition: width 0.15s ease;
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
+        }
+
+        a.active {
+          .split {
+            opacity: 1;
+          }
+
+          &::after {
+            width: 100%;
+          }
         }
       }
     }

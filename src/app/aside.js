@@ -9,11 +9,11 @@ import {
 } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
-function StringSplit({ arr, type }) {
+function StringSplit({ arr, type, className = "" }) {
   return (
     <>
       {arr.map((e) => (
-        <span key={uuidv4()} className={`split ${type}`}>
+        <span key={uuidv4()} className={`split ${type} ${className}`}>
           {(() => {
             if (type === "char") return e === " " ? "\u00A0" : e;
             else type === "word";
@@ -34,28 +34,33 @@ export default function Aside({ setActiveSection, className }) {
 
   return (
     <aside id="aside" className={`${className}`}>
-      <div id="person" className="active leading-less flex translate-x-[-90%] ">
-        <div id="name" className="min-w-max">
-          <div>
-            <a
-              href="https://github.com/KeadonM"
-              className="text-fluid-700 tracking-tighter [&>span]:inline-block"
-              target="_blank"
-            >
-              <StringSplit arr={name.arr} type={name.type} />
-            </a>
-          </div>
+      <div
+        id="person"
+        className="active flex translate-x-[-90%] justify-self-start leading-less med:translate-x-[0%] "
+      >
+        <div className="hideable med:!scale-100">
+          <div id="name" className="min-w-max">
+            <div>
+              <a
+                href="https://github.com/KeadonM"
+                className="text-fluid-700 tracking-tighter [&>span]:inline-block"
+                target="_blank"
+              >
+                <StringSplit arr={name.arr} type={name.type} />
+              </a>
+            </div>
 
-          <div
-            id="title"
-            className="min-w-max tracking-tighter [&>span]:inline-block"
-          >
-            <StringSplit arr={title.arr} type={title.type} />
+            <div
+              id="title"
+              className="min-w-max tracking-tighter [&>span]:inline-block"
+            >
+              <StringSplit arr={title.arr} type={title.type} />
+            </div>
           </div>
         </div>
 
         <button
-          className="med:hidden show-arrow"
+          className="show-arrow opacity-70 med:hidden"
           onClick={() => {
             document.getElementById("contact").classList.toggle("active");
             document.getElementById("person").classList.toggle("active");
@@ -67,32 +72,42 @@ export default function Aside({ setActiveSection, className }) {
 
       <div
         id="blurb"
-        className="leading-less col-span-2 mt-200 text-fluid-400 tracking-tighter [&>span]:inline-block"
+        className="col-span-2 mt-200 text-fluid-400 leading-less tracking-tighter [&>span]:inline-block"
       >
         <StringSplit arr={blurb.arr} type={blurb.type} />
       </div>
 
-      <nav id="nav" className="desktop:block my-600 hidden">
+      <nav id="nav" className="my-600 hidden desktop:block">
         <ul>
-          {data.info.nav.map((string) => (
-            <li key={uuidv4()}>
-              <a
-                href={"#" + string.toLowerCase()}
-                // onClick={() => setActiveSection(string.toLowerCase())}
-              >
-                <StringSplit arr={string.split(char)} type={"char"} />
-              </a>
-            </li>
-          ))}
+          {Object.keys(data.section).map((key) => {
+            const label = key[0].toUpperCase() + key.slice(1);
+            return (
+              data.section[key].content.length > 0 && (
+                <li key={uuidv4()}>
+                  <a
+                    id={`nav-${key}`}
+                    className="nav-item"
+                    onClick={(e) => handleNavclick(e, key)}
+                  >
+                    <StringSplit
+                      arr={label.split(char)}
+                      type={"char"}
+                      className="pointer-events-none"
+                    />
+                  </a>
+                </li>
+              )
+            );
+          })}
         </ul>
       </nav>
 
       <div
         id="contact"
-        className="med:translate-x-0 top col-start-2 row-start-1 flex translate-x-[90%] justify-self-end whitespace-nowrap"
+        className="top col-start-2 row-start-1 flex origin-right translate-x-[90%] justify-self-end whitespace-nowrap med:translate-x-[0%] "
       >
         <button
-          className="med:hidden show-arrow"
+          className="show-arrow opacity-70 med:hidden"
           onClick={() => {
             document.getElementById("contact").classList.toggle("active");
             document.getElementById("person").classList.toggle("active");
@@ -100,27 +115,27 @@ export default function Aside({ setActiveSection, className }) {
         >
           <FaArrowLeft className="pointer-events-none" />
         </button>
-        <div className="hideable">
+        <div className="hideable med:!scale-100">
           <div id="links">
             <ul className="flex justify-between gap-400">
-              <li>
-                <FaGithub />
-              </li>
-              <li>
-                <FaLinkedin />
-              </li>
               <li>
                 <FaEnvelope />
               </li>
               <li>
                 <FaPhone />
               </li>
+              <li>
+                <FaGithub />
+              </li>
+              <li>
+                <FaLinkedin />
+              </li>
             </ul>
           </div>
 
           <div
             id="email"
-            className="desktop:leading-normal text-fluid-500 leading-none opacity-50"
+            className="text-fluid-500 leading-none opacity-50 desktop:leading-normal"
           >
             <a className="[&>span]:inline-block">
               <StringSplit arr={email.arr} type={email.type} />
@@ -130,4 +145,22 @@ export default function Aside({ setActiveSection, className }) {
       </div>
     </aside>
   );
+}
+
+function handleNavclick(e, id) {
+  const navItem = document.querySelector(".nav-item.active");
+  if (navItem !== null) navItem.classList.remove("active");
+  e.target.classList.add("active");
+
+  const scrollIntoViewWithOffset = (scrollContainer, selector) => {
+    scrollContainer.scrollTo({
+      behavior: "smooth",
+      top: document.querySelector(selector).offsetTop,
+    });
+  };
+
+  const container = document.getElementById("scrollable-container");
+  const selector = "#" + id;
+
+  scrollIntoViewWithOffset(container, selector);
 }

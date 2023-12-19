@@ -11,16 +11,14 @@ const data = {
     title: "Full Stack Engineer",
     blurb:
       "I strive to create beautiful scalable apps. Currently open for work.",
-    nav: ["About", "Skills", "Projects", "Resume"],
     email: "reach@keadon.dev",
-    resume: resume,
   },
 
-  lists: {
+  section: {
     about: {
       type: "Text",
       title: "About Me",
-      list: [
+      content: [
         "Passionate web developer with a keen eye for detail and a flair for creating engaging online experiences. Armed with a robust skill set in HTML, CSS, and JavaScript, I bring creativity and functionality to every project. From sleek responsive designs to seamless user interfaces, I thrive on transforming ideas into dynamic, user-friendly websites that leave a lasting impression.",
         "Throughout his career, John has honed his skills in both front-end and back-end development, creating seamless and responsive websites that not only meet but exceed client expectations. His dedication to staying up-to-date with the latest industry trends and technologies ensures that his work is not only innovative but also at the forefront of the ever-evolving digital landscape.",
         "Outside of coding, John is an avid learner and enjoys exploring new technologies, attending tech meetups, and contributing to open-source projects.",
@@ -30,7 +28,7 @@ const data = {
     skills: {
       type: "HList",
       title: undefined,
-      list: [
+      content: [
         { title: "JS", img: "" },
         { title: "TS", img: "" },
         { title: "C#", img: "" },
@@ -50,12 +48,12 @@ const data = {
       ],
     },
 
-    experience: { type: "VList", title: undefined, list: [] },
+    experience: { type: "VList", title: undefined, content: [] },
 
     projects: {
       type: "VList",
       title: undefined,
-      list: [
+      content: [
         {
           title: "Conspicuous Ink",
           img: conspicuousink,
@@ -118,12 +116,23 @@ const data = {
     blog: {
       type: "VList",
       title: undefined,
-      list: [
+      content: [
         {
           title: "Fluid Responsivity",
           img: "",
           date: "2020",
           desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+          link: "http://google.com/",
+        },
+      ],
+    },
+
+    resume: {
+      type: "Resume",
+      title: undefined,
+      content: [
+        {
+          img: resume,
           link: "http://google.com/",
         },
       ],

@@ -3,25 +3,29 @@ import Image from "next/image";
 import { IconContext } from "react-icons";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-export function Text({ title, list }) {
+export function Text({ data }) {
+  const { title, content } = data;
   return (
     <>
       {title && <SectionHeader title={title} />}
       <div className="text space-y-100">
-        {list.map((e) => (
-          <p key={uuidv4()}>{e}</p>
+        {content.map((e) => (
+          <p key={uuidv4()} className={"fade-element"}>
+            {e}
+          </p>
         ))}
       </div>
     </>
   );
 }
 
-export function HList({ title, list }) {
+export function HList({ data }) {
+  const { title, content } = data;
   return (
     <>
       {title && <SectionHeader title={title} />}
-      <ul className="h-list flex flex-wrap gap-100">
-        {list.map((e) => (
+      <ul className="h-list fade-element flex flex-wrap gap-100">
+        {content.map((e) => (
           <SkillEntry key={uuidv4()} title={e.title} />
         ))}
       </ul>
@@ -29,22 +33,37 @@ export function HList({ title, list }) {
   );
 }
 
-export function VList({ title, list }) {
+export function VList({ data }) {
+  const { title, content } = data;
   return (
     <>
       {title && <SectionHeader title={title} />}
       <ul className="v-list flex flex-col gap-400">
-        {list.map((e) => (
-          <ListEntry key={uuidv4()} data={e} />
+        {content.map((e) => (
+          <ListEntry
+            key={uuidv4()}
+            data={e}
+            className="fade-element list-entry"
+          />
         ))}
       </ul>
     </>
   );
 }
 
+export function Resume({ data }) {
+  const { title, content } = data;
+  return (
+    <img
+      src={content[0].img.src}
+      className="rounded-lg opacity-60 transition-opacity duration-500 hover:opacity-100"
+    />
+  );
+}
+
 function SectionHeader({ title, Icon }) {
   return (
-    <h2 className="mb-200 text-fluid-500 leading-none text-accent-1">
+    <h2 className="fade-element mb-200 text-fluid-500 leading-none text-accent-1">
       {Icon && (
         <>
           <Icon className="inline" />
@@ -64,9 +83,9 @@ function SkillEntry({ title, img }) {
   );
 }
 
-function ListEntry({ data }) {
+function ListEntry({ data, className }) {
   return (
-    <li className="list-entry">
+    <li className={className}>
       <a href={data.link} className="flex gap-300" target="_blank">
         {/* <p className="min-w-min">{date}</p> */}
         {/* <div className="h-400 w-400 text-accent-1"></div> */}
@@ -77,12 +96,14 @@ function ListEntry({ data }) {
             <FaExternalLinkAlt className="inline text-fluid-200" />
           </h3>
           <p className="mb-auto whitespace-pre-wrap">{data.desc}</p>
-          {data.skills !== undefined && <HList list={data.skills} />}
+          {data.skills !== undefined && (
+            <HList data={{ content: data.skills }} />
+          )}
         </div>
 
         {data.img !== "" && (
           <div
-            className="scroll-img w-3/10 relative ml-auto min-w-min shrink-0 rounded-xl bg-cover bg-top opacity-40 transition-opacity duration-0"
+            className="scroll-img relative ml-auto w-3/10 min-w-min shrink-0 rounded-xl bg-cover bg-top opacity-40 transition-opacity duration-0"
             style={{
               backgroundImage: `url(${data.img.src})`,
               animationDuration: `${data.img.height / data.img.width}s`,

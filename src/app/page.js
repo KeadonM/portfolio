@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import runAnimation from "./animationcontroller.js";
+import scrollOpacity from "./scrollEffects.js";
+import runAnimation from "./animationController.js";
 import "./styles/animation.scss";
 
 import Aside from "./aside.js";
@@ -53,6 +54,7 @@ export default function Home() {
 
   useEffect(() => {
     runAnimation();
+    scrollOpacity();
   }, []);
 
   return (
@@ -63,15 +65,15 @@ export default function Home() {
       >
         <div
           id="app-wrapper"
-          className="desktop:flex-row desktop:mx-700 desktop:gap-700 ml-400 mr-200 flex h-min flex-col gap-500"
+          className="ml-400 mr-200 flex h-min flex-col gap-500 desktop:mx-700 desktop:flex-row desktop:gap-700"
         >
           <Aside
             setActiveSection={setActiveSection}
-            className="desktop:block desktop:sticky desktop:top-0 desktop:self-start desktop:pt-700 desktop:max-w-aside max-w-content-fixed grid grid-cols-2 pt-600 text-fluid-600 text-light-2 "
+            className="grid max-w-content-fixed grid-cols-2 pt-600 text-fluid-600 text-light-2 desktop:sticky desktop:top-0 desktop:block desktop:max-w-aside desktop:self-start desktop:pt-700 "
           />
           <Content
             activeSection={activeSection}
-            className="desktop:max-w-content desktop:translate-y-[-300%] desktop:mt-700 desktop:pt-700 max-w-content-fixed text-light-1 "
+            className="max-w-content-fixed text-light-1 desktop:mt-700 desktop:max-w-content desktop:translate-y-[-300%] desktop:pt-600 "
           />
         </div>
       </div>

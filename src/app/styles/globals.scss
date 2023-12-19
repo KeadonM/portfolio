@@ -78,23 +78,21 @@ body {
 #contact {
   transition: transform 0.5s ease-in-out;
 
-  // .hideable {
-  //   opacity: 0;
-  // }
+  .hideable {
+    transition: transform 0.5s ease-in-out;
+    transform: scale(0);
+  }
 
   &.active {
     transform: translateX(0%);
 
     .show-arrow {
       opacity: 0;
+      pointer-events: none;
     }
 
-    // .show-arrow {
-    //   display: none;
-    // }
-
     .hideable {
-      opacity: 1;
+      transform: scale(1);
     }
   }
 }
