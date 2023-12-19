@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
-import { IconContext } from "react-icons";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 export function Text({ data }) {
@@ -52,12 +51,19 @@ export function VList({ data }) {
 }
 
 export function Resume({ data }) {
-  const { title, content } = data;
+  const img = data.content[0].img;
   return (
-    <img
-      src={content[0].img.src}
-      className="rounded-lg opacity-60 transition-opacity duration-500 hover:opacity-100"
-    />
+    <div
+      className="as relative"
+      style={{ aspectRatio: `${img.width}/${img.height}` }}
+    >
+      <Image
+        src={img.src}
+        alt="Resume"
+        fill="true"
+        className="rounded-lg opacity-60 transition-opacity duration-500 hover:opacity-100"
+      />
+    </div>
   );
 }
 
@@ -77,7 +83,7 @@ function SectionHeader({ title, Icon }) {
 
 function SkillEntry({ title, img }) {
   return (
-    <li className="button rounded-lg bg-accent-1 px-100 py-50 text-fluid-300 font-bold text-dark-1 opacity-80">
+    <li className="skill-entry rounded-lg bg-accent-1 px-100 py-50 text-fluid-300 font-bold text-dark-1 opacity-80">
       {title}
     </li>
   );
@@ -86,31 +92,36 @@ function SkillEntry({ title, img }) {
 function ListEntry({ data, className }) {
   return (
     <li className={className}>
-      <a href={data.link} className="flex gap-300" target="_blank">
-        {/* <p className="min-w-min">{date}</p> */}
-        {/* <div className="h-400 w-400 text-accent-1"></div> */}
-
-        <div className="flex flex-col justify-between">
-          <h3 className="flex items-center text-fluid-400 text-accent-1">
-            {data.title}&nbsp;
-            <FaExternalLinkAlt className="inline text-fluid-200" />
-          </h3>
+      <a
+        href={data.link}
+        className="flex justify-between gap-300"
+        target="_blank"
+      >
+        <div className="flex w-full flex-col justify-between">
+          <div className="flex items-center justify-between">
+            <h3 className="flex items-center text-fluid-400 text-accent-1">
+              {data.title}&nbsp;
+              <FaExternalLinkAlt className="inline text-fluid-200" />
+            </h3>
+            {data.date && <div>{data.date}</div>}
+          </div>
           <p className="mb-auto whitespace-pre-wrap">{data.desc}</p>
-          {data.skills !== undefined && (
-            <HList data={{ content: data.skills }} />
-          )}
+          {data.skills && <HList data={{ content: data.skills }} />}
         </div>
-
-        {data.img !== "" && (
-          <div
-            className="scroll-img relative ml-auto w-3/10 min-w-min shrink-0 rounded-xl bg-cover bg-top opacity-40 transition-opacity duration-0"
-            style={{
-              backgroundImage: `url(${data.img.src})`,
-              animationDuration: `${data.img.height / data.img.width}s`,
-            }}
-          ></div>
-        )}
+        {data.img && <PreviewImage img={data.img} />}
       </a>
     </li>
+  );
+}
+
+function PreviewImage({ img }) {
+  return (
+    <div
+      className="scroll-img relative  w-3/10 min-w-min shrink-0 rounded-xl bg-cover bg-top opacity-40 transition-opacity duration-0"
+      style={{
+        backgroundImage: `url(${img.src})`,
+        animationDuration: `${img.height / img.width}s`,
+      }}
+    ></div>
   );
 }

@@ -1,8 +1,6 @@
-import { Text, VList, HList, Resume } from "./components.js";
+import { Text, VList, HList, Resume } from "./contentComponents.js";
 import data from "../data/data.js";
 import { v4 as uuidv4 } from "uuid";
-import { FaFilter } from "react-icons/fa";
-import { info } from "autoprefixer";
 
 export default function Content({ activeSection, className }) {
   return (

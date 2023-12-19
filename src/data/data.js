@@ -11,6 +11,12 @@ const data = {
     title: "Full Stack Engineer",
     blurb:
       "I strive to create beautiful scalable apps. Currently open for work.",
+    links: {
+      email: "link",
+      phone: "link",
+      github: "https://github.com/KeadonM",
+      linkedin: "https://www.linkedin.com/in/keadon/",
+    },
     email: "reach@keadon.dev",
   },
 
@@ -72,7 +78,6 @@ const data = {
         {
           title: "ResuCraft",
           img: resucraft,
-          date: "Oct - 2023",
           desc: "Feature-rich scalable resume crafter.\nDeployed to Vercel.",
           skills: [
             { title: "React", img: "" },
@@ -84,7 +89,6 @@ const data = {
         {
           title: "Weatherly",
           img: weatherly,
-          date: "Apr - 2020",
           desc: "API-driven weather/event forecaster.\nDeployed to GH Pages.",
           skills: [
             { title: "JS", img: "" },
@@ -99,7 +103,6 @@ const data = {
         {
           title: "Duck Farm",
           img: duckfarm,
-          date: "2018 - 2019",
           desc: "Accessible, innovative casual mobile game.\nDeployed to iOS and Android.",
           skills: [
             { title: "Unity", img: "" },
@@ -119,7 +122,6 @@ const data = {
       content: [
         {
           title: "Fluid Responsivity",
-          img: "",
           date: "2020",
           desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
           link: "http://google.com/",

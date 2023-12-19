@@ -1,15 +1,15 @@
 export default function setupScroll() {
   const scrollWindow = document.getElementById("scrollable-container");
 
+  //Set up fadeElements
   const fadeElements = {};
-
   document.querySelectorAll(".fade-element").forEach((element) => {
     const pos = element.offsetTop;
     fadeElements[pos] = { element: element, height: element.offsetHeight };
   });
 
+  //Set up sectionElements
   const sectionElements = {};
-
   document.querySelectorAll(".content-section").forEach((element) => {
     const pos = element.offsetTop;
     sectionElements[pos] = {
@@ -20,6 +20,8 @@ export default function setupScroll() {
 
   scrollWindow.onscroll = () =>
     handleScroll(scrollWindow, fadeElements, sectionElements);
+
+  //Recalculate on resize
   window.onresize = () => {
     scrollWindow.onscroll = null;
     setupScroll();

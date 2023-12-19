@@ -3,7 +3,7 @@
   opacity: 0;
 }
 
-main {
+#main {
   opacity: 0;
   transform: translateY(300%);
 
@@ -22,7 +22,6 @@ main {
     #name {
       .char {
         transform: translateY(-300%);
-        // transform-origin: top right;
 
         @for $i from 1 through 15 {
           &:nth-child(#{$i}) {
@@ -37,12 +36,6 @@ main {
         .char {
           opacity: 1;
           transform: translateY(0%);
-
-          // @for $i from 1 through 15 {
-          //   &:nth-child(#{$i}) {
-          //     animation: pop-in 0.66s ease-in-out 0.033s * $i forwards;
-          //   }
-          // }
         }
       }
     }
@@ -50,7 +43,6 @@ main {
     #title {
       .char {
         transform: translateY(200%);
-        // transform-origin: bottom right;
 
         @for $i from 1 through 19 {
           &:nth-child(#{$i}) {
@@ -65,12 +57,6 @@ main {
         .char {
           opacity: 0.75;
           transform: translateY(0%);
-
-          // @for $i from 1 through 19 {
-          //   &:nth-child(#{$i}) {
-          //     animation: pop-in 0.66s ease-in-out 0.033s * $i forwards;
-          //   }
-          // }
         }
       }
     }
@@ -165,31 +151,59 @@ main {
     }
   }
 
-  #links {
-    li {
-      opacity: 0;
-      @for $i from 1 through 4 {
-        &:nth-child(#{$i}) {
-          transition: opacity 3s ease-in-out 0.15s * $i;
+  #contact {
+    #links {
+      li {
+        opacity: 0;
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) {
+            transition: opacity 3s ease-in-out 0.15s * $i;
+          }
+        }
+        &.init {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    #email {
+      .char {
+        @for $i from 1 through 16 {
+          &:nth-child(#{$i}) {
+            transition: opacity 4s ease-in-out 0.05s * $i;
+          }
         }
       }
       &.init {
-        opacity: 0.5;
+        .char {
+          opacity: 0.75;
+        }
       }
     }
   }
 
-  #email {
-    .char {
-      @for $i from 1 through 16 {
-        &:nth-child(#{$i}) {
-          transition: opacity 4s ease-in-out 0.05s * $i;
-        }
-      }
+  .hideable-container {
+    transition: transform 0.5s ease-in-out;
+
+    .show-arrow {
+      transition: opacity 0.33s ease-in-out;
     }
-    &.init {
-      .char {
-        opacity: 0.75;
+
+    .hideable {
+      transition: transform 0.5s ease-in-out;
+      transform: scale(0);
+    }
+
+    &.active {
+      transform: translateX(0%);
+
+      .show-arrow {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .hideable {
+        transform: scale(1);
       }
     }
   }
@@ -218,33 +232,6 @@ main {
   }
 }
 
-@keyframes fall-in {
-  0% {
-    transform: translateY(-200%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    transform: translateX(-200%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes slide-up {
-  0% {
-    transform: translateY(200%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
-
 @keyframes pop-in {
   0% {
     scale: 0;
@@ -254,29 +241,5 @@ main {
   }
   100% {
     scale: 1;
-  }
-}
-
-@keyframes opacity50 {
-  to {
-    opacity: 50%;
-  }
-}
-
-@keyframes opacity65 {
-  to {
-    opacity: 65%;
-  }
-}
-
-@keyframes opacity75 {
-  to {
-    opacity: 75%;
-  }
-}
-
-@keyframes opacity100 {
-  to {
-    opacity: 100%;
   }
 }
