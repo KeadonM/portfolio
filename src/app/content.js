@@ -1,83 +1,40 @@
-import { SectionHeader, SkillEntry, ListEntry } from "./components.js";
-import data from "./data.js";
+import { Text, VList, HList, Resume } from "./contentComponents.js";
+import data from "../data/data.js";
 import { v4 as uuidv4 } from "uuid";
-import { FaFilter } from "react-icons/fa";
-import { info } from "autoprefixer";
 
-export default function Content({ activeSection }) {
+export default function Content({ activeSection, className }) {
   return (
     <main
       id="main"
-      className="flex flex-col pt-700 text-fluid-300 text-light-1 [&>section>.v-list]:space-y-200 [&>section]:pt-400 [null&>section]:space-x-300"
+      className={`flex flex-col gap-400 text-fluid-300  ${className}`}
     >
-      <section
-        id="about"
-        className={activeSection === "about" && "active-section"}
-      >
-        <SectionHeader title="About Me" />
-        <ul className="v-list">
-          {data.about.map((e) => (
-            <li key={uuidv4()} className="">
-              {e}
-            </li>
-          ))}
-        </ul>
-      </section>
+      {Object.keys(data.section).map((objKey) => {
+        const currentList = data.section[objKey];
+        if (currentList.content.length > 0)
+          return (
+            <section id={objKey} key={uuidv4()} className="content-section">
+              {(() => {
+                const contentData = {
+                  title: currentList.title,
+                  content: currentList.content,
+                };
+                switch (currentList.type) {
+                  case "Text":
+                    return <Text data={contentData} />;
+                  case "HList":
+                    return <HList data={contentData} />;
+                  case "VList":
+                    return <VList data={contentData} />;
+                  case "Resume":
+                    return <Resume data={contentData} />;
 
-      <section
-        id="skills"
-        className={activeSection === "skills" && "active-section"}
-      >
-        {/* <SectionHeader title="Skills" Icon={FaFilter} /> */}
-        <ul className="flex flex-wrap gap-200">
-          {data.skills.map((e) => (
-            <SkillEntry key={uuidv4()} title={e.title} />
-          ))}
-        </ul>
-      </section>
-
-      {/* <section
-        id="experience"
-        className={activeSection === "experience" && "active-section"}
-      >
-        <SectionHeader title="Experience" />
-        <ul className="v-list">
-          {data.experiences.map((e) => (
-            <ListEntry key={uuidv4()} data={e} />
-          ))}
-        </ul>
-      </section> */}
-
-      <section
-        id="projects"
-        className={activeSection === "projects" && "active-section"}
-      >
-        {/* <SectionHeader title="Projects" /> */}
-        <ul className="v-list">
-          {data.projects.map((e) => (
-            <ListEntry key={uuidv4()} data={e} />
-          ))}
-        </ul>
-      </section>
-
-      {/* <section
-        id="blog"
-        className={activeSection === "blog" && "active-section"}
-      >
-        <SectionHeader title="Blog" />
-        <ul className="v-list">
-          {data.posts.map((e) => (
-            <ListEntry key={uuidv4()} data={e} />
-          ))}
-        </ul>
-      </section> */}
-
-      <section id="resume">
-        <img
-          src={data.info.resume.src}
-          className="rounded-lg opacity-60 transition-opacity duration-500 hover:opacity-100"
-        />
-      </section>
+                  default:
+                    return null;
+                }
+              })()}
+            </section>
+          );
+      })}
 
       <div id="footer-wrapper" className="col-span-full py-400 text-center">
         <footer>Built with Next.js, deployed to Vercel.</footer>

@@ -1,0 +1,245 @@
+.word,
+.char {
+  opacity: 0;
+}
+
+#main {
+  opacity: 0;
+  transform: translateY(300%);
+
+  transition:
+    transform 2.5s cubic-bezier(0.25, 1, 0.25, 1),
+    opacity 3.5s ease-in-out;
+
+  &.init {
+    opacity: 0.75;
+    transform: translateY(0%);
+  }
+}
+
+#aside {
+  #person {
+    #name {
+      .char {
+        transform: translateY(-300%);
+
+        @for $i from 1 through 15 {
+          &:nth-child(#{$i}) {
+            transition:
+              transform 0.66s ease-in-out 0.033s * $i,
+              opacity 3s ease-in-out 0.033s * $i;
+          }
+        }
+      }
+
+      &.init {
+        .char {
+          opacity: 1;
+          transform: translateY(0%);
+        }
+      }
+    }
+
+    #title {
+      .char {
+        transform: translateY(200%);
+
+        @for $i from 1 through 19 {
+          &:nth-child(#{$i}) {
+            transition:
+              transform 0.66s ease-in-out 0.033s * $i,
+              opacity 3.5s ease-in-out 0.033s * $i;
+          }
+        }
+      }
+
+      &.init {
+        .char {
+          opacity: 0.75;
+          transform: translateY(0%);
+        }
+      }
+    }
+  }
+
+  #blurb {
+    .word {
+      transform: translateY(200%) scale(0);
+      transform-origin: bottom right;
+      @for $i from 1 through 11 {
+        &:nth-child(#{$i}) {
+          transition:
+            transform 0.8s ease-in-out 0.12s * $i,
+            opacity 2.5s ease-in-out 0.12s * $i;
+        }
+      }
+    }
+
+    &.init {
+      .word {
+        opacity: 0.5;
+        transform: translateY(0%);
+
+        @for $i from 1 through 11 {
+          &:nth-child(#{$i}) {
+            animation: pop-in 0.8s ease-in-out 0.12s * $i forwards;
+          }
+        }
+      }
+    }
+  }
+
+  #nav {
+    li {
+      @for $li from 1 through 5 {
+        &:nth-child(#{$li}) {
+          .char {
+            @for $i from 1 through 20 {
+              &:nth-child(#{$i}) {
+                transition: opacity 1s ease-in-out 0.066s * $i;
+              }
+            }
+          }
+        }
+      }
+
+      &.init {
+        .char {
+          opacity: 0.5;
+        }
+
+        a:hover {
+          .char {
+            opacity: 1;
+            @for $i from 1 through 20 {
+              &:nth-child(#{$i}) {
+                transition: opacity 0.1s ease-in-out 0.033s * $i;
+              }
+            }
+          }
+        }
+
+        a {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: grey;
+            transition: width 0.15s ease;
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
+        }
+
+        a.active {
+          .split {
+            opacity: 1;
+          }
+
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  #contact {
+    #links {
+      li {
+        opacity: 0;
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) {
+            transition: opacity 3s ease-in-out 0.15s * $i;
+          }
+        }
+        &.init {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    #email {
+      .char {
+        @for $i from 1 through 16 {
+          &:nth-child(#{$i}) {
+            transition: opacity 4s ease-in-out 0.05s * $i;
+          }
+        }
+      }
+      &.init {
+        .char {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+
+  .hideable-container {
+    transition: transform 0.5s ease-in-out;
+
+    .show-arrow {
+      transition: opacity 0.33s ease-in-out;
+    }
+
+    .hideable {
+      transition: transform 0.5s ease-in-out;
+      transform: scale(0);
+    }
+
+    &.active {
+      transform: translateX(0%);
+
+      .show-arrow {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .hideable {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.scroll-img {
+  filter: url(#sepia);
+
+  animation: scroll-img 2.5s ease-in-out infinite alternate;
+  animation-play-state: paused;
+
+  &:hover {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 100%;
+    animation-play-state: running;
+    filter: url();
+  }
+
+  @keyframes scroll-img {
+    0% {
+      background-position: top;
+    }
+    100% {
+      background-position: bottom;
+    }
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    scale: 0;
+  }
+  90% {
+    scale: 1;
+  }
+  100% {
+    scale: 1;
+  }
+}

@@ -26,6 +26,16 @@ module.exports = {
       700: "clamp(3rem, calc(2.7rem + 1.5vw), 4.5rem)",
       800: "clamp(4rem, calc(3.45rem + 2.75vw), 6.75rem)",
       app: "clamp(0.5rem, calc(0.25rem + 3.75vw), 6rem)",
+      "1/10": "10%",
+      "2/10": "20%",
+      "3/10": "30%",
+      "4/10": "40%",
+      "5/10": "50%",
+      "6/10": "60%",
+      "7/10": "70%",
+      "8/10": "80%",
+      "9/10": "90%",
+      "10/10": "100%",
     },
     extend: {
       fontSize: {
@@ -44,7 +54,16 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       maxWidth: {
-        app: "min(calc(11rem + 55vw), 70rem)",
+        aside: "min(calc(7.5rem + 15vw), 24.5rem)",
+        content: "min(calc(15rem + 25vw), 38rem)",
+        "content-fixed": "38rem",
+      },
+      screens: {
+        med: "29em",
+        desktop: "55em",
+      },
+      lineHeight: {
+        less: 0.85,
       },
     },
   },
