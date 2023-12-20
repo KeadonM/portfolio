@@ -60,10 +60,13 @@ module.exports = {
       },
       screens: {
         med: "29em",
-        desktop: "55em",
+        desktop: "58.75em",
       },
       lineHeight: {
         less: 0.85,
+      },
+      height: {
+        "preview-mobile": "10rem",
       },
     },
   },

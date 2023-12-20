@@ -71,6 +71,7 @@ export default function Aside({ setActiveSection, className }) {
       <nav id="nav" className="my-600 hidden desktop:block">
         <ul>
           {Object.keys(data.section).map((key) => {
+            if (key === "resume") return;
             const label = key[0].toUpperCase() + key.slice(1);
             return (
               data.section[key].content.length > 0 && (

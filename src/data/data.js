@@ -62,14 +62,13 @@ const data = {
         {
           title: "Conspicuous Ink",
           img: conspicuousink,
-          desc: "Freelanced custom tattoo studio website.\nDeployed to Hostinger.\nTest Line.",
+          desc: "Freelanced custom tattoo studio website.\nDeployed to Hostinger.",
           skills: [
             { title: "HTML", img: "" },
             { title: "CSS", img: "" },
             { title: "JS", img: "" },
             { title: "Firebase", img: "" },
             { title: "GCP", img: "" },
-            { title: "Vite", img: "" },
           ],
           link: "https://conspicuous.ink/",
         },
@@ -106,7 +105,6 @@ const data = {
             { title: "Unity", img: "" },
             { title: "C#", img: "" },
             { title: "Xcode", img: "" },
-            { title: "Xcode", img: "" },
             { title: "Android Studio", img: "" },
           ],
           link: "https://www.youtube.com/watch?v=jwxJ7XPa15g",
@@ -118,12 +116,12 @@ const data = {
       type: "VList",
       title: undefined,
       content: [
-        {
-          title: "Fluid Responsivity",
-          date: "2020",
-          desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
-          link: "http://google.com/",
-        },
+        // {
+        //   title: "Fluid Responsivity",
+        //   date: "2020",
+        //   desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+        //   link: "http://google.com/",
+        // },
       ],
     },
 

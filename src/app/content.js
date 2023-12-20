@@ -1,4 +1,5 @@
 import { Text, VList, HList, Resume } from "./contentComponents.js";
+import { FaWrench } from "react-icons/fa";
 import data from "../data/data.js";
 import { v4 as uuidv4 } from "uuid";
 
@@ -36,8 +37,17 @@ export default function Content({ activeSection, className }) {
           );
       })}
 
-      <div id="footer-wrapper" className="col-span-full py-400 text-center">
-        <footer>Built with Next.js, deployed to Vercel.</footer>
+      <div id="footer-wrapper" className="col-span-full pb-400 text-center">
+        <footer>
+          <div id="footer-contact" className="text-fluid-400">
+            <a>reach@keadon.dev</a>
+          </div>
+          <div>
+            Currently under construction&nbsp;
+            <FaWrench className="inline" />
+          </div>
+          <div>Built with Next.js, deployed to Vercel.</div>
+        </footer>
       </div>
     </main>
   );

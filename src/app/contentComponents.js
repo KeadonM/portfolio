@@ -94,7 +94,7 @@ function ListEntry({ data, className }) {
     <li className={className}>
       <a
         href={data.link}
-        className="flex justify-between gap-300"
+        className="flex flex-col justify-between gap-300 med:flex-row"
         target="_blank"
       >
         <div className="flex w-full flex-col justify-between">
@@ -117,7 +117,7 @@ function ListEntry({ data, className }) {
 function PreviewImage({ img }) {
   return (
     <div
-      className="scroll-img relative  w-3/10 min-w-min shrink-0 rounded-xl bg-cover bg-top opacity-40 transition-opacity duration-0"
+      className="h-preview-mobile scroll-img relative min-w-min shrink-0 rounded-xl bg-cover bg-top opacity-40 transition-opacity duration-0 med:h-auto med:w-3/10"
       style={{
         backgroundImage: `url(${img.src})`,
         animationDuration: `${img.height / img.width}s`,

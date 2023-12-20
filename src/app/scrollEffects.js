@@ -2,6 +2,15 @@ export default function setupScroll() {
   const scrollWindow = document.getElementById("scrollable-container");
 
   //Set up fadeElements
+  const parentIsColumn =
+    document
+      .getElementById("app-wrapper")
+      .computedStyleMap()
+      .get("flex-direction").value === "column"
+      ? true
+      : false;
+
+  const fadeOffset = parentIsColumn ? 100 : 0;
   const fadeElements = {};
   document.querySelectorAll(".fade-element").forEach((element) => {
     const pos = element.offsetTop;
@@ -19,7 +28,7 @@ export default function setupScroll() {
   });
 
   scrollWindow.onscroll = () =>
-    handleScroll(scrollWindow, fadeElements, sectionElements);
+    handleScroll(scrollWindow, fadeElements, fadeOffset, sectionElements);
 
   //Recalculate on resize
   window.onresize = () => {
@@ -28,17 +37,17 @@ export default function setupScroll() {
   };
 }
 
-function handleScroll(scrollWindow, fadeElements, sectionElements) {
+function handleScroll(scrollWindow, fadeElements, fadeOffset, sectionElements) {
   let scrollPosition = scrollWindow.scrollTop;
   let windowHeight = scrollWindow.height;
 
-  handleScrollOpacity(scrollPosition, fadeElements);
+  handleScrollOpacity(scrollPosition, fadeElements, fadeOffset);
   handleActiveNav(scrollPosition, windowHeight, sectionElements);
 }
 
-function handleScrollOpacity(scrollPosition, fadeElements) {
+function handleScrollOpacity(scrollPosition, fadeElements, fadeOffset) {
   Object.keys(fadeElements).map((key) => {
-    const distanceFromTop = key - scrollPosition;
+    const distanceFromTop = key - scrollPosition + fadeOffset;
 
     let opacity = 1;
     let height = fadeElements[key].height;
