@@ -61,6 +61,7 @@ export function Resume({ data }) {
         src={img.src}
         alt="Resume"
         fill="true"
+        priority={true}
         className="rounded-lg opacity-60 transition-opacity duration-500 hover:opacity-100"
       />
     </div>
