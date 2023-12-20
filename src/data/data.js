@@ -9,8 +9,7 @@ const data = {
   info: {
     name: "Keadon Mitchell",
     title: "Full Stack Engineer",
-    blurb:
-      "I strive to create beautiful scalable apps. Currently open for work.",
+    blurb: "I develop beautifully scalable software for the web and beyond.",
     links: {
       email: "link",
       phone: "link",
@@ -25,9 +24,9 @@ const data = {
       type: "Text",
       title: "About Me",
       content: [
-        "Passionate web developer with a keen eye for detail and a flair for creating engaging online experiences. Armed with a robust skill set in HTML, CSS, and JavaScript, I bring creativity and functionality to every project. From sleek responsive designs to seamless user interfaces, I thrive on transforming ideas into dynamic, user-friendly websites that leave a lasting impression.",
-        "Throughout his career, John has honed his skills in both front-end and back-end development, creating seamless and responsive websites that not only meet but exceed client expectations. His dedication to staying up-to-date with the latest industry trends and technologies ensures that his work is not only innovative but also at the forefront of the ever-evolving digital landscape.",
-        "Outside of coding, John is an avid learner and enjoys exploring new technologies, attending tech meetups, and contributing to open-source projects.",
+        "Back in 2010, I wrote my first line of code on my mom's laptop. The rush I got after successfully instructing the computer to simply add a couple of numbers together and print them to the console; I was hooked, and from that moment developing software became my lifelong passion. To me, this isn’t merely a set of technical skills; it’s my canvas to express creativity and a propellant to my strive for continued learning and self-improvement.",
+        "Over the years I’ve published mobile games, created personal tools, and deployed various web projects. My robust exploration of software has led to a diverse array of flexible skills. Where these skills will take me, I’m not yet sure. But in the meantime, I continue to hone my craft.",
+        "If you haven’t caught me coding you’ll probably catch me bowling, playing games, or jumping down the rabbit hole of some niche topic that’s managed to grasp my curiosity.",
       ],
     },
 
@@ -63,7 +62,6 @@ const data = {
         {
           title: "Conspicuous Ink",
           img: conspicuousink,
-          date: "Mar - 2023",
           desc: "Freelanced custom tattoo studio website.\nDeployed to Hostinger.\nTest Line.",
           skills: [
             { title: "HTML", img: "" },

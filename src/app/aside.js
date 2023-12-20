@@ -102,12 +102,20 @@ export default function Aside({ setActiveSection, className }) {
           <div id="links">
             <ul className="flex justify-between gap-400">
               <li>
-                <a href="https://www.linkedin.com/in/keadon/" target="_blank">
+                <a href="mailto:reach@keadon.dev">
                   <FaEnvelope />
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/keadon/" target="_blank">
+                <a
+                  target="_blank"
+                  onClick={() =>
+                    alert(
+                      "Please contact me via email at reach@keadon.dev for my number.",
+                    )
+                  }
+                  className="cursor-pointer"
+                >
                   <FaPhone />
                 </a>
               </li>
@@ -130,7 +138,7 @@ export default function Aside({ setActiveSection, className }) {
             id="email"
             className="text-fluid-500 leading-none opacity-50 desktop:leading-normal"
           >
-            <a className="[&>span]:inline-block">
+            <a href="mailto:reach@keadon.dev" className="[&>span]:inline-block">
               <StringSplit arr={email.arr} type={email.type} />
             </a>
           </div>

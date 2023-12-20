@@ -65,7 +65,7 @@ export default function Home() {
       >
         <div
           id="app-wrapper"
-          className="ml-400 mr-200 flex h-min flex-col gap-500 desktop:mx-700 desktop:flex-row desktop:gap-700"
+          className="ml-400 mr-200 flex h-min flex-col gap-500 overflow-hidden desktop:mx-700 desktop:flex-row desktop:gap-700 desktop:overflow-visible"
         >
           <Aside
             setActiveSection={setActiveSection}
@@ -73,7 +73,7 @@ export default function Home() {
           />
           <Content
             activeSection={activeSection}
-            className="max-w-content-fixed text-light-1 desktop:mt-700 desktop:max-w-content desktop:translate-y-[-300%] desktop:pt-600 "
+            className=" max-w-content-fixed pt-600 text-light-1 desktop:mt-700 desktop:max-w-content desktop:translate-y-[-300%] "
           />
         </div>
       </div>
