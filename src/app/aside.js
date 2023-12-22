@@ -46,7 +46,6 @@ export default function Aside({ setActiveSection, className }) {
             href="https://keadon.dev"
             id="name"
             className="text-fluid-700 tracking-tighter [&>span]:inline-block"
-            target="_blank"
           >
             <StringSplit arr={name.arr} type={name.type} />
           </a>
