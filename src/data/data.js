@@ -1,4 +1,4 @@
-import resume from "../assets/keadon-mitchell-resume.png";
+// import resume from "../assets/keadon-mitchell-resume.png";
 
 import conspicuousink from "../assets/conspicuous-ink.webp";
 import resucraft from "../assets/resucraft.png";
@@ -125,16 +125,16 @@ const data = {
       ],
     },
 
-    resume: {
-      type: "Resume",
-      title: undefined,
-      content: [
-        {
-          img: resume,
-          link: "http://google.com/",
-        },
-      ],
-    },
+    // resume: {
+    //   type: "Resume",
+    //   title: undefined,
+    //   content: [
+    //     {
+    //       img: resume,
+    //       link: "http://google.com/",
+    //     },
+    //   ],
+    // },
   },
 };
 
